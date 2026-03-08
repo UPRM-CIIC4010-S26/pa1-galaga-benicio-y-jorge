@@ -17,8 +17,18 @@ Program::Program() {
         });
 
     for (int i = 0; i < 30; i++) {
-        float x = 250 + 50 * i;
-        float y = 200 + 50 * i;
+        float x, y;
+
+        if (i < 10){
+            x = 250 - 150 + 25 + 80 * i;
+            y = 200;
+        } else if (i < 20) {
+            x = 250 - 150/2 + 25 + 65 * (i - 10);
+            y = 250;
+        } else {
+             x = 275 + 50 * (i - 20);
+             y = 300;
+        }
 
         Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
             std::pair<float, float>{x, y}, 
