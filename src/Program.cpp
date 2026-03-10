@@ -65,9 +65,16 @@ void Program::Update() {
             }
         }
 
-        for (Projectile& p : Projectile::projectiles) { 
-            p.update(); 
+        for (Projectile& p : Projectile::projectiles) 
+        { 
+        p.update();
 
+            if (p.ID == 1 && HitBox::Collision(player->hitBox, p.getHitBox())) 
+            {
+                PlayerReset();
+                p.del = true;
+    
+            }
         }
 
         if (lives <= 0 && pauseFrames <= 0) gameOver = true;
