@@ -12,15 +12,18 @@ class Player {
     public:
         std::pair<float, float> position;
         HitBox hitBox;
+        int score;
 
         Player(float x, float y) {
             this->position.first = x;
             this->position.second = y;
             this->hitBox = HitBox(x, y, 30, 30);
+            this->score = 0;
         }
 
         void draw();
         void update();
         void keyInputs();
         void attack();
+        int getScore() { return this->score; }
 };
