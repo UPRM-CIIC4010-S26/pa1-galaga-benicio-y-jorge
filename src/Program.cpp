@@ -45,7 +45,7 @@ void Program::Update() {
     pauseFrames = std::max(pauseFrames - 1, 0);
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
-        Enemy::ManageEnemies(player->hitBox);
+        Enemy::ManageEnemies(player->hitBox, score);
         StdEnemy::attackReset();
         ManageEnemyRespawns();
         player->update();
@@ -93,6 +93,7 @@ void Program::Draw() {
                    Rectangle{10.0f + i * 30, GetScreenHeight() - 30.0f, 20, 20}, 
                    Vector2{0, 0}, 0, WHITE);
     }
+    DrawText(TextFormat("Score: %i", score), 10, 10, 30, WHITE);
 
 
     for (Projectile p : Projectile::projectiles) p.draw();
@@ -204,5 +205,6 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    score = 0;
     Program();
 }
