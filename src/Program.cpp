@@ -5,6 +5,11 @@ Program::Program() {
         HitBox(0, 0, 10, GetScreenHeight()), 
         HitBox(GetScreenWidth() - 10, 0, 10, GetScreenHeight())
     };
+    
+    if (!SoundManager::musicPlaying){
+    PlaySound(SoundManager::music);
+    SoundManager::musicPlaying = true;
+}
 
     Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
             std::pair<float, float>{350, 150}, 
@@ -86,6 +91,10 @@ void Program::Update() {
         if (lives <= 0 && pauseFrames <= 0) gameOver = true;
         Projectile::CleanProjectiles();
         Projectile::ProjectileCollision();
+
+        if (SoundManager::musicPlaying && !IsSoundPlaying(SoundManager::music)) {
+            PlaySound(SoundManager::music);
+        }
     }
 }
 
