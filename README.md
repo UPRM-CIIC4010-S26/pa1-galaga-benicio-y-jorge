@@ -22,3 +22,5 @@ If a partner has no commits in the repositories, they will receive a 0.
 
 ## Student Notes
 If you have any bonus specs, bonus or any details the TA's should know, you should include it here:
+
+We have implemented vertical motion allowing the player to move up and down but not so far as to move behind hte enemies. Furthermore We have added a background music to make the game feel more complete. 
