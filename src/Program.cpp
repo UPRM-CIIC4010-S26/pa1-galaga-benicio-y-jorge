@@ -1,11 +1,12 @@
 #include "Program.hpp"
 
 Program::Program() {
+
     Background::sideWalls = std::pair<HitBox, HitBox>{ 
         HitBox(0, 0, 10, GetScreenHeight()), 
         HitBox(GetScreenWidth() - 10, 0, 10, GetScreenHeight())
     };
-    
+
     if (!SoundManager::musicPlaying){
     PlaySound(SoundManager::music);
     SoundManager::musicPlaying = true;
@@ -48,6 +49,10 @@ void Program::Update() {
         if (Animation::animations[i].done) Animation::animations.erase(Animation::animations.begin() + i);
     }
     pauseFrames = std::max(pauseFrames - 1, 0);
+
+    if (SoundManager::musicPlaying && !IsSoundPlaying(SoundManager::music)) {
+            PlaySound(SoundManager::music);
+        }
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
         Enemy::ManageEnemies(player->hitBox, score);
@@ -92,9 +97,7 @@ void Program::Update() {
         Projectile::CleanProjectiles();
         Projectile::ProjectileCollision();
 
-        if (SoundManager::musicPlaying && !IsSoundPlaying(SoundManager::music)) {
-            PlaySound(SoundManager::music);
-        }
+
     }
 }
 

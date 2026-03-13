@@ -28,6 +28,18 @@ void Player::update() {
             this->position.first += collision.first + 1;
         }
     }
+
+    HitBox topWall(0, 0, GetScreenWidth(), 400);
+    HitBox bottomWall(0, GetScreenHeight() - 10, GetScreenWidth(), 10);
+
+    if (HitBox::Collision(topWall, this->hitBox)) {
+        std::pair<double, double> collision = HitBox::CollisionMargins(this->hitBox, topWall);
+        this->position.second += collision.second;
+    }
+    if (HitBox::Collision(bottomWall, this->hitBox)) {
+        std::pair<double, double> collision = HitBox::CollisionMargins(this->hitBox, bottomWall);
+        this->position.second += collision.second;
+    }
 }
 
 void Player::keyInputs() {
