@@ -12,7 +12,7 @@ Don't forget that you must also fill out an evaluation form in Moodle to conside
 ## Grading
 
 (802246318) (Jorge E. Garcia Serrano) (jorge.garcia52@upr.edu)
-(STUDENT NUMBER HERE) (Benicio Terry) (benicio.terry@upr.edu)
+(802221274) (Benicio L. Terry Mendoza) (benicio.terry@upr.edu)
 
 Any project that doesn't compile will receive a 0.
 
